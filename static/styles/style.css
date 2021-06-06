@@ -13,8 +13,8 @@ body {
     border-color: white;
     border-style: solid;
     border-radius: 15%;
-    width: 25%;
-    height: 100%;
+    width: 25em;
+    height: 20em;
 }
 
 /* Specifically for class_item.html 
