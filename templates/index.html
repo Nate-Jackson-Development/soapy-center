@@ -67,10 +67,10 @@
             var i = 1;
             var someplace = document.getElementsByTagName("tbody");
             while (i <= classes) {
-                var assignments = await fetch('http://64.121.162.77:5000/api/v1/' + (i - 1) + '/Assignments');
+                var assignments = await fetch('/api/v1/' + (i - 1) + '/Assignments');
                 var dumpedAssignments = await assignments.json();
                 //console.log(dumpedAssignments);
-                var points = await fetch('http://64.121.162.77:5000/api/v1/points/' + (i - 1))
+                var points = await fetch('/api/v1/points/' + (i - 1))
                 var dumpedPoints = await points.json();
 
                 for (var assig in dumpedAssignments) {
