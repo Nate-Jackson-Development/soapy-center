@@ -145,6 +145,7 @@ def attendance():
     }
 
     return render_template("attendance.html", data = data)
+    
 @app.route('/jankModeActivated')
 def jankModeActivated():
     return str(session.get('IFRAME_SOURCE'))
