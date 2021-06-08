@@ -3,10 +3,9 @@ from flask import request, render_template, redirect, url_for, session
 from flask_session import Session
 from datetime import timedelta
 import json
-from ScraperEmpty import main, attendanceFunc
+from Scraper import main, attendanceFunc
 from flask_cors import CORS
 from waitress import serve
-import requests
 from string_utils import split_str, split_str_carrot, split_str_plus
 
 app = flask.Flask(__name__)
