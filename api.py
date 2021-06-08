@@ -137,6 +137,8 @@ def attendance():
 
     cookiejar, attendanceFrameLink, iframesource = attendanceFunc(username, password)
 
+    session["IFRAME_SOURCE"] = iframesource
+
     data = {
         "iframeSource" : iframesource
     }
