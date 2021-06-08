@@ -20,7 +20,7 @@ Session(app)
 def getData(username, password):
     # test if credentials work
     data, data2, data3, data4, data5 = main(username, password)
-    attendaceLink, attendaceCookies, iframeData = attendanceFunc(username, password)
+    
 
     session['authenticated'] = True
     session['class_avg'] = data # List of classes and grades
@@ -28,9 +28,6 @@ def getData(username, password):
     session['assignment_amount'] = data3 # Amount of assignments
     session['assignmentDescription'] = data4 # Assignment Descriptions
     session['assignmentPoints'] = data5 # Points per assignment
-    session['ATTENDANCE_COOKIES'] = attendaceLink # Sets the attendance iframe URL
-    session['ATTENDANCE_FRAME_LINK'] = attendaceCookies # sets the attendance Cookies
-    session['IFRAME_SOURCE'] = iframeData # sets the html code for the iframe
     
 
 ## IMPORTANT
@@ -135,9 +132,10 @@ def assPoints(clsnum):
 @app.route('/attendance', methods=['GET', 'POST'])
 def attendance():
 
-    cookiejar = session.get('ATTENDANCE_COOKIES')
-    attendanceFrameLink = session.get('ATTENDANCE_FRAME_LINK')
-    iframesource = session.get('IFRAME_SOURCE')
+    username = session.get('username')
+    password = session.get('password')
+
+    cookiejar, attendanceFrameLink, iframesource = attendanceFunc(username, password)
 
     data = {
         "iframeSource" : iframesource
