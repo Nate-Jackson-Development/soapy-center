@@ -163,7 +163,18 @@ def main(username, password):
 
     return mainList, assigGradeCombine, amountOfAssignments, assignmentDesc, assignmentGradesPoints
 
-def attendanceFunc(username, password):
+def attendanceFunc(username: str, password: str):
+    """
+    ## Scrapes the Attendance information from homeaccess center
+    Returns iframeLink, cookiejar, iframeData
+
+    iframeLink is the absolute link to the iframe
+
+    cookiejar is the requests cookiejar for the iframe
+
+    iframeData is the HTML source of the iframe
+    """
+
     session = requests.Session()
     # Handles Cookies for logging in and persistance
 
