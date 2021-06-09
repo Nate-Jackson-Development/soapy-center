@@ -153,12 +153,19 @@ def attendance():
 def jankModeActivated():
     htmlData = str(session.get('IFRAME_SOURCE'))
 
+    soup = BeautifulSoup(htmlData, features='lxml')
+
+    aTags = soup.select("a")
+
+    for tag in aTags:
+        tag.decompose()
+
     linkTag = re.compile(r"<link.*>")
     scriptTag = re.compile(r"<script[^>]*>[^<]*</script>")
-    aTag = re.compile(r"<a[^>]*>[^>]*<\/a>", flags=re.S)
+    aTag = re.compile(r"<a[^>]*>[^>]*<\/a>", flags=re.S | re.M)
     stragglerTag = re.compile(r"<script[^>]*>[^>]*</script>", flags=re.S)
 
-    linkless = re.sub(linkTag, '', htmlData)
+    linkless = re.sub(linkTag, '', str(soup))
     scriptless = re.sub(scriptTag, '', linkless)
     aTagLess = re.sub(aTag, '', scriptless)
     evenScriptLess = re.sub(stragglerTag, '', aTagLess)
