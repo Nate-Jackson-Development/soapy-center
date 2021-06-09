@@ -1,5 +1,8 @@
 import flask
+import re
+from bs4 import BeautifulSoup
 from flask import request, render_template, redirect, url_for, session
+from flask.helpers import make_response
 from flask_session import Session
 from datetime import timedelta
 import json
@@ -135,19 +138,25 @@ def attendance():
     username = session.get('username')
     password = session.get('password')
 
-    cookiejar, attendanceFrameLink, iframesource = attendanceFunc(username, password)
+    attendanceFrameLink, cookiejar, iframesource = attendanceFunc(username, password)
 
     session["IFRAME_SOURCE"] = iframesource
 
     data = {
-        "iframeSource" : iframesource
+        "iframeSource" : iframesource,
+        "iframeLink" : attendanceFrameLink
     }
 
-    return render_template("attendance.html", data = data)
+    return make_response(render_template("attendance.html", data = data))
     
 @app.route('/jankModeActivated')
 def jankModeActivated():
-    return str(session.get('IFRAME_SOURCE'))
+    htmlData = str(session.get('IFRAME_SOURCE'))
+    linkTag = re.compile(r"<link.*>")
+    scriptTag = re.compile(r"<script[^>]*>[^<]*</script>")
+    linkless = re.sub(linkTag, '', htmlData)
+    scriptless = re.sub(scriptTag, '', linkless)
+    return str(scriptless)
 
 if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=5000, debug=False)
