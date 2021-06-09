@@ -155,7 +155,7 @@ def jankModeActivated():
 
     linkTag = re.compile(r"<link.*>")
     scriptTag = re.compile(r"<script[^>]*>[^<]*</script>")
-    aTag = re.compile(r"<a[^>]*>[^>]*</a>")
+    aTag = re.compile(r"<a[^>]*>[^>]*<\/a>", flags=re.S)
     stragglerTag = re.compile(r"<script[^>]*>[^>]*</script>", flags=re.S)
 
     linkless = re.sub(linkTag, '', htmlData)
