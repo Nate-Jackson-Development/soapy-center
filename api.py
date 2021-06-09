@@ -154,7 +154,7 @@ def jankModeActivated():
     htmlData = str(session.get('IFRAME_SOURCE'))
     linkTag = re.compile(r"<link.*>")
     scriptTag = re.compile(r"<script[^>]*>[^<]*</script>")
-    aTag = re.compile(r"<a[^>]*>[^<]*</a>")
+    aTag = re.compile(r"<a[^>]*>[^>]*</a>")
     stragglerTag = re.compile(r"<script[^>]*>[^>]*</script>")
     linkless = re.sub(linkTag, '', htmlData)
     scriptless = re.sub(scriptTag, '', linkless)
