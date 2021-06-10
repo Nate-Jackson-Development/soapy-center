@@ -13,7 +13,7 @@ def main(username, password):
     r = session.get(url)
     # setting the website url to 'r'
 
-    soup = BeautifulSoup(r.text, features="html.parser")
+    soup = BeautifulSoup(r.text, features="lxml")
     # extracting the raw website data into 'soup'
 
     VerificationToken = soup.find("input", {"name":"__RequestVerificationToken"}).get("value")
@@ -32,7 +32,7 @@ def main(username, password):
     GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn/index.html?ReturnUrl=%2fhomeaccess", data = payload)
     # Sending to Payload to the website for login
 
-    soup = BeautifulSoup(GradeLogin.text, features="html.parser")
+    soup = BeautifulSoup(GradeLogin.text, features="lxml")
     # Parsing the response from the payload
 
     assignments = soup.find("iframe")
@@ -44,7 +44,7 @@ def main(username, password):
     GradesLocation = session.post(url = link_get_source, data = payload)
     # grabs grades location
 
-    soup = BeautifulSoup(GradesLocation.text, features="html.parser")
+    soup = BeautifulSoup(GradesLocation.text, features="lxml")
     # Applies grades code to the variable 'soup' 
 
     # Start extraction --
@@ -87,7 +87,7 @@ def main(username, password):
     it = 0
 
     for c in testAssignment: # 5 times
-        soupy = BeautifulSoup(str(c), features="html.parser") # Parse table
+        soupy = BeautifulSoup(str(c), features="lxml") # Parse table
 
         assignmentNames = soupy.select("table.sg-asp-table > tr.sg-asp-table-data-row > td > a ") # get assignment names
         
@@ -97,7 +97,7 @@ def main(username, password):
 
         
 
-        #soup = BeautifulSoup(str(assignmentGrades), features="html.parser")
+        #soup = BeautifulSoup(str(assignmentGrades), features="lxml")
 
         #assignmentGrades = soup.prettify(formatter=lambda s: s.replace(u'\xa0', 'None'))
 
@@ -184,7 +184,7 @@ def attendanceFunc(username: str, password: str):
     r = session.get(url)
     # setting the website url to 'r'
 
-    soup = BeautifulSoup(r.text, features="html.parser")
+    soup = BeautifulSoup(r.text, features="lxml")
     # extracting the raw website data into 'soup'
 
     VerificationToken = soup.find("input", {"name":"__RequestVerificationToken"}).get("value")
@@ -201,7 +201,7 @@ def attendanceFunc(username: str, password: str):
 
     GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = payload)
 
-    soup = BeautifulSoup(GradeLogin.text, features="html.parser")
+    soup = BeautifulSoup(GradeLogin.text, features="lxml")
     # Parsing the response from the payload
 
     attendanceFrame = soup.find("iframe")
