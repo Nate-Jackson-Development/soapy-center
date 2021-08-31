@@ -216,7 +216,40 @@ def attendanceFunc(username: str, password: str):
 
     return (iframeLink, cookiejar, iframeData)
 
-def getSchedule():
+def getSchedule(username, password):
+    session = requests.Session()
+    url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn/index.html"
+    # URL for going to the site
+
+    r = session.get(url)
+    # setting the website url to 'r'
+
+    soup = BeautifulSoup(r.text, features="lxml")
+    # extracting the raw website data into 'soup'
+
+    VerificationToken = soup.find("input", {"name":"__RequestVerificationToken"}).get("value")
+    # Retarted Verification Token added for no good reason
+
+    payload = {
+        "__RequestVerificationToken" : VerificationToken,
+        "SCKTY00328510CustomEnabled" : False,
+        "Database" : 10,
+        "LogOnDetails.UserName" : username,
+        "LogOnDetails.Password" : password
+            }
+    # Payload Information to send for login
+
+    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = payload)
+
+    iframeLink = "https://homeaccess.beth.k12.pa.us/HomeAccess/Classes/Schedule"
+    iframeSRC = session.post(iframeLink)
+
+    soup = BeautifulSoup(iframeSRC.text, features="lxml")
+
+    mainTable = soup.find("table")
+
+    
+
     return None
 
 if __name__ == "__main__":
