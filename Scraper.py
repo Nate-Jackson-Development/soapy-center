@@ -216,6 +216,9 @@ def attendanceFunc(username: str, password: str):
 
     return (iframeLink, cookiejar, iframeData)
 
+def getSchedule():
+    return None
+
 if __name__ == "__main__":
     a, b, c, d, e = main("mooren", "Basd1010749")
     print(b)
