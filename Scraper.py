@@ -241,17 +241,31 @@ def getSchedule(username, password):
 
     GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = payload)
 
-    iframeLink = "https://homeaccess.beth.k12.pa.us/HomeAccess/Classes/Schedule"
+    iframeLink = "https://homeaccess.beth.k12.pa.us/HomeAccess/Content/Student/Classes.aspx"
     iframeSRC = session.post(iframeLink)
 
-    soup = BeautifulSoup(iframeSRC.text, features="lxml")
+    isoup = BeautifulSoup(iframeSRC.text, features="lxml")
 
-    mainTable = soup.find("table")
+    mainTable = isoup.find_all("table")[1]
 
-    
+    tableRows = mainTable.find_all("tr")
+    tableRows.pop(0)
 
-    return None
+    elemsList = list()
+
+    for a in tableRows:
+        elems = list()
+        elms = list()
+        elems = a.find_all("td")
+        elems.pop(0)
+        elems.pop(4)
+        for i in elems:
+            elms.append(i.text.strip())    
+        elemsList.append(elms)
+
+    return elemsList
 
 if __name__ == "__main__":
-    a, b, c, d, e = main("mooren", "Basd1010749")
-    print(b)
+    # a, b, c, d, e = main("mooren", "Basd1010749")
+    # print(b)
+    print(getSchedule("mooren", "Basd1010749"))

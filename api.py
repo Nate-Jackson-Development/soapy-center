@@ -6,7 +6,7 @@ from flask.helpers import make_response
 from flask_session import Session
 from datetime import timedelta
 import json
-from Scraper import main, attendanceFunc
+from Scraper import main, attendanceFunc, getSchedule
 from flask_cors import CORS
 from waitress import serve
 from string_utils import split_str, split_str_carrot, split_str_plus
@@ -102,6 +102,11 @@ def logout():
     session['authenticated'] = False
     return redirect(url_for('auth'))
 
+@app.route("/api/v1/schedule")
+def schedule():
+    username = session.get('username')
+    password = session.get('password')
+    return json.dumps(getSchedule(username, password))
 
 @app.route('/api/v1/assignmentAmounts')
 def assignmentAmounts():
@@ -131,6 +136,10 @@ def assDesc(clsnum):
 @app.route('/api/v1/points/<clsnum>')
 def assPoints(clsnum):
     return str(json.dumps(session.get('assignmentPoints')[int(clsnum)]))
+
+@app.route("/schedule")
+def schedulePage():
+    return render_template("schedule")
 
 @app.route('/attendance', methods=['GET', 'POST'])
 def attendance():
