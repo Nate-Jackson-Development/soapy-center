@@ -110,7 +110,7 @@ def main(username, password):
         for a in assignmentCheckExcusal:
             i += 1
 
-            if i == 5: # Get Points pt. 1
+            if i == 6: # Get Points pt. 1
                 if a.text == "\xa0":
                     tempC = ("None" + "/")
                 elif a.text == "\n":
@@ -118,10 +118,10 @@ def main(username, password):
                 else:
                     tempC = (a.text.strip() + "/")
 
-            if i == 6: # Get Points pt. 2
+            if i == 7: # Get Points pt. 2
                 tempB.append(str(tempC + a.text.strip())) # Combine Points
 
-            if i == 10 : # Get Percentage grade
+            if i == 11 : # Get Percentage grade
                 i = 0
                 if a.text == "\xa0":
                     temp.append("None")
