@@ -121,7 +121,7 @@ def main(username, password):
             if i == 6: # Get Points pt. 2
                 tempB.append(str(tempC + a.text.strip())) # Combine Points
 
-            if i == 11 : # Get Percentage grade
+            if i == 10 : # Get Percentage grade
                 i = 0
                 if a.text == "\xa0":
                     temp.append("None")
