@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from bs4.element import ResultSet
 import requests
 import json
 import re
@@ -52,8 +53,17 @@ def main(username, password):
     classes = soup.find_all("a", {"class":"sg-header-heading"})
     #classes = soup.select("a.sg-header-heading")
     # Finds Classes Names
+
+    averages = list()
+    count = 0
+
+    for i in classes:
+        x = soup.find("span", {"id":f'plnMain_rptAssigmnetsByCourse_lblOverallAverage_{count}'})
+        averages.append(x)
+        print(x)
+        count += 1
     
-    averages = soup.find_all("span", {"class":"sg-header-heading sg-right"})
+    # averages = soup.find_all("span", {"class":"sg-header-heading sg-right"})
     #averages = soup.select("span.sg-header-heading.sg-right")
     # Finds Grades for the class
 
@@ -61,8 +71,14 @@ def main(username, password):
     # initialize the array for the mixed classname/grades
 
     for i, j in zip(classes, averages):
-        temp = i.text.strip() + ":" + j.text
-        mainList.append(temp)
+        try:
+            temp = i.text.strip().replace(":"," ") + ":" + j.text
+            mainList.append(temp)
+        except AttributeError as e:
+            mainList.append(i.text.strip() + ":" + "")
+            pass
+        except Exception as e:
+            print(e)
 
     #subList = []
     # Initializes the array for the individual assignments
@@ -266,6 +282,6 @@ def getSchedule(username, password):
     return elemsList
 
 if __name__ == "__main__":
-    # a, b, c, d, e = main("mooren", "Basd1010749")
-    # print(b)
-    print(getSchedule("mooren", "Basd1010749"))
+    a, b, c, d, e = main("mooren", "Basd1010749")
+    print(a)
+    # print(getSchedule("mooren", "Basd1010749"))
