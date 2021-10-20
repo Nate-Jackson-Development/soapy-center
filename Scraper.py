@@ -72,7 +72,7 @@ def main(username, password):
 
     for i, j in zip(classes, averages):
         try:
-            temp = i.text.strip().replace(":"," ") + ":" + j.text
+            temp = i.text.strip().replace(":"," ") + ":" + j.text + "%"
             mainList.append(temp)
         except AttributeError as e:
             mainList.append(i.text.strip() + ":" + "")
