@@ -301,6 +301,6 @@ def getSchedule(username, password):
     return elemsList
 
 if __name__ == "__main__":
-    a, b, c, d, e = main("mooren", "Basd1010749")
+    a = getSchedule("mooren", "Basd1010749")
     print(a)
     # print(getSchedule("mooren", "Basd1010749"))
