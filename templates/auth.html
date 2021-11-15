@@ -15,10 +15,18 @@ redirect here from index if not logged in-->
         <!-- Auth Box -->
         <center>
             <!-- If an error in auth has occured -->
-            {% if err != '0' %}
+            {% if err = '1' %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <h6><i class="fas fa-exclamation-circle"></i> Uh-oh!</h6> <br>
                 <p>Your credentials are most likely incorrect. If you're sure they're right, Home Access may be down.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endif %}
+
+            {% if err = '2' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h6><i class="fas fa-exclamation-circle"></i> Uh-oh!</h6> <br>
+                <p>An unrecoverable error occured, please resign in</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             {% endif %}

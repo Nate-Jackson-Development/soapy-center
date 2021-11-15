@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API reference</title>
+    <style>
+        body {
+            background-color: #212529;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    {% include 'inc/nav.html' %}
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <td>
+                    Route
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    Description
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    /api/v1
+                </td>
+                <td>
+                    JSON List
+                </td>
+                <td>
+                    A JSON list of classnames and grade seperated with a colon
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    /api/v1/&lt;classnum&gt;/Assignments
+                </td>
+                <td>
+                    JSON List
+                </td>
+                <td>
+                    A Json list of assignments for the selected class
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    /api/v1/points/&lt;clsnum&gt;
+                </td>
+                <td>
+                    JSON list
+                </td>
+                <td>
+                    A JSON list of the point grade for each assignment in the selected class
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Changelog</title>
+        <style>
+        
+        div.rounded {
+            border-radius: 2px;
+            background-color: #414141;
+        }
+
+        body {
+            background-color: #212529;
+            color: white;
+        }
+        
+        .padded {
+            padding: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        ul.he {
+            list-style: none;
+        }
+
+        li:before.he {
+            content: "-";
+            padding-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'inc/nav.html' %}
+    <div class="changelog padded rounded">
+        <p>
+            <h1>Changelog</h1>
+            11/10/2021:
+            <ul>   
+                <li>Implementing an API reference page</li>
+                <li>Implemented a working schedule</li>
+                <li>Fixed persistent signin</li>
+                <li>Fixed edge case with refreshing without a valid session</li>
+            </ul>
+            11/9/2021:
+            <ul>
+                <li>Added changelog</li>
+                <li>Added persistent signin</li>
+            </ul>
+
+            10/20/2021:
+            <ul>
+                <li>Fixed course average grade</li>
+                <li>Added percent sign to course average</li>
+            </ul>
+
+        </p>
+    </div>
+    <!--
+        Scripts
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/de5215728b.js" crossorigin="anonymous"></script>
+</body>
+</html>

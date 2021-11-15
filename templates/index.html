@@ -21,12 +21,20 @@
 <body>
     {% include 'inc/nav.html' %}
 
-    <center>
+    <div style="text-align: center;">
         <h1><i class="fas fa-home"></i> Home Access</h1>
-    </center>
+    </div>
     <br>
     
     <div class="accordion" id="accordionExample">
+        {% if not data %}
+            <h1 style="text-align: center;">
+                Something horrible went wrong, resetting
+            </h1>
+            <script>
+                window.location.replace("/logout")
+            </script>
+        {% endif %}
         {% for key, value in data.items() %}
             <div class="accordion-item">
                 <h2 class="accordion-header">

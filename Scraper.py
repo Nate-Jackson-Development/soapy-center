@@ -26,7 +26,7 @@ def main(username, password):
         "SCKTY00328510CustomEnabled" : False,
         "Database" : 10,
         "LogOnDetails.UserName" : username,
-        "LogOnDetails.Password" : password
+        "LogOnDetails.Password" : password,
             }
     # Payload Information to send for login
 
@@ -48,6 +48,28 @@ def main(username, password):
     soup = BeautifulSoup(GradesLocation.text, features="lxml")
     # Applies grades code to the variable 'soup' 
 
+    # print(GradesLocation.text)
+
+    # # __EVENTTARGET = soup.select_one("#__EVENTTARGET")["value"]
+    # # __EVENTARGUMENT = soup.select_one("#__EVENTARGUMENT")["value"]
+    # __VIEWSTATE = soup.select_one("#__VIEWSTATE")["value"]
+    # __VIEWSTATEGENERATOR = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
+    # __EVENTVALIDATION = soup.select_one("#__EVENTVALIDATION")["value"]
+    # __SELECTION = "(All Runs)"
+
+    # payload = {
+    #     # "__EVENTTARGET": __EVENTTARGET,
+    #     # "__EVENTARGUMENT": __EVENTARGUMENT,
+    #     "__VIEWSTATE": __VIEWSTATE,
+    #     "__VIEWSTATEGENERATOR": __VIEWSTATEGENERATOR,
+    #     "__EVENTVALIDATION": __EVENTVALIDATION,
+    #     "__SELECTION": __SELECTION
+    # }
+
+    # GradesLocation = session.post(url = link_get_source, data = payload)
+
+    # soup = BeautifulSoup(GradesLocation.text, features="lxml")
+
     # Start extraction --
 
     classes = soup.find_all("a", {"class":"sg-header-heading"})
@@ -56,12 +78,9 @@ def main(username, password):
 
     averages = list()
     count = 0
-
-    for i in classes:
-        x = soup.find("span", {"id":f'plnMain_rptAssigmnetsByCourse_lblOverallAverage_{count}'})
+    for i in enumerate(classes):
+        x = soup.find("span", {"id":f'plnMain_rptAssigmnetsByCourse_lblOverallAverage_{i[0]}'})
         averages.append(x)
-        print(x)
-        count += 1
     
     # averages = soup.find_all("span", {"class":"sg-header-heading sg-right"})
     #averages = soup.select("span.sg-header-heading.sg-right")

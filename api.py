@@ -1,7 +1,7 @@
 import flask
 import re
 from bs4 import BeautifulSoup
-from flask import request, render_template, redirect, url_for, session
+from flask import request, render_template, redirect, url_for, session, make_response
 from flask.helpers import make_response
 from flask_session import Session
 from datetime import timedelta
@@ -23,6 +23,8 @@ Session(app)
 def getData(username, password):
     # test if credentials work
     data, data2, data3, data4, data5 = main(username, password)
+
+    
     
 
     session['authenticated'] = True
@@ -40,6 +42,22 @@ def getData(username, password):
 # Authentication
 @app.route('/auth/v1/', methods=['GET', 'POST'])
 def auth():
+    cook = make_response(redirect(url_for('home')))
+
+    if request.cookies.get('p') != "" or request.cookies.get('u') != "":
+        try:
+            session['username'] = request.cookies.get('u')
+            session['password'] = request.cookies.get('p')
+
+            session['authenticated'] = True
+
+            return cook
+        except Exception as e:
+            # if they don't:
+            # display the error (err = "1")
+            print(e)
+            return render_template('auth/v1/auth.html', err = "1")
+    
     #POST form data
     if request.method == 'POST':
         username = request.form['username']
@@ -48,11 +66,14 @@ def auth():
         session['username'] = username
         session['password'] = password
 
+        cook.set_cookie('u', username, max_age=60*60*24*365*2)
+        cook.set_cookie('p', password, max_age=60*60*24*365*2)
+
         #print(username, password)
         try:
             getData(username, password)
 
-            return redirect(url_for('home'))
+            return cook
 
         except Exception as e:
             # if they don't:
@@ -70,10 +91,13 @@ def auth():
 @app.route('/refresh')
 def refresh():
 
-    username = session.get('username')
-    password = session.get('password')
+    username = request.cookies.get('u')
+    password = request.cookies.get('p')
 
-    getData(username, password)
+    try:
+        getData(username, password)
+    except:
+        redirect(url_for('auth'))
 
     return redirect(url_for('home'))
 
@@ -90,9 +114,13 @@ def home():
 
     data = {}
 
-    for i in session.get('class_avg'):
-        _temp_ = split_str(i)
-        data.update({_temp_[0]:_temp_[1]})
+    try:
+        for i in session.get('class_avg'):
+            _temp_ = split_str(i)
+            data.update({_temp_[0]:_temp_[1]})
+    except Exception as e:
+        print(e)
+        redirect(url_for("refresh"))
         
     return render_template("index.html", data = data)
 
@@ -100,7 +128,14 @@ def home():
 def logout():
     session.clear()
     session['authenticated'] = False
-    return redirect(url_for('auth'))
+    cook = make_response(redirect(url_for('auth')))
+    cook.set_cookie('u', "")
+    cook.set_cookie('p', "")
+    return cook
+
+@app.route("/changelog")
+def changelog():
+    return render_template("Changelog.html")
 
 @app.route("/api/v1/schedule")
 def schedule():
@@ -139,7 +174,10 @@ def assPoints(clsnum):
 
 @app.route("/schedule")
 def schedulePage():
-    return render_template("schedule")
+    username = session.get('username')
+    password = session.get('password')
+    data = getSchedule(username, password)
+    return render_template("schedule.html", data = data)
 
 @app.route('/attendance', methods=['GET', 'POST'])
 def attendance():
@@ -180,6 +218,10 @@ def jankModeActivated():
     evenScriptLess = re.sub(stragglerTag, '', aTagLess)
 
     return str(evenScriptLess)
+
+@app.route("/api")
+def apiRef():
+    return render_template("reference.html")
 
 if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=5000, debug=False)

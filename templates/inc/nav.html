@@ -12,11 +12,17 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('attendance') }}"><i class="fas fa-chair"></i> Attendance</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('schedule') }}"><i class="fas fa-calendar-alt"></i></i> Schedule</a>
+          </li>
         </ul>
         <ul class="navbar-nav me-right">
-            <li class="nav-item">
-                <a href="{{ url_for('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Exit Home Access</a>
-            </li>
+          <li class="nav-item">
+            <a href="{{ url_for('changelog') }}" class="nav-link"><i class="fas fa-clipboard-list"></i> Changelog</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Exit Home Access</a>
+          </li>
         </ul>
       </div>
     </div>
