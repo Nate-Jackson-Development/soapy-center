@@ -22,6 +22,10 @@ body {
    basic info 
 */
 
+div.scrollBox {
+    overflow: scroll;
+}
+
 .class-item {
     margin-top: 5em;
     border-color: white;
