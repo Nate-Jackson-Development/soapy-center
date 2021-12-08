@@ -23,7 +23,7 @@ body {
 */
 
 div.scrollBox {
-    overflow: scroll;
+    overflow: auto;
 }
 
 .class-item {
