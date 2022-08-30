@@ -200,7 +200,7 @@ def attendance():
 def jankModeActivated():
     htmlData = str(session.get('IFRAME_SOURCE'))
 
-    soup = BeautifulSoup(htmlData, features='lxml')
+    soup = BeautifulSoup(htmlData, features='html.parser')
 
     aTags = soup.select("a")
 
