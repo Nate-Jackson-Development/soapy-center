@@ -6,7 +6,7 @@ import re
 
 def main(username, password):
     session = requests.Session()
-    # Handles Cookies for logging in and persistance
+    # Handles Cookies for logging in and persistance 
 
     url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn/index.html"
     # URL for going to the site
