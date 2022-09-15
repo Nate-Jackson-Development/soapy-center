@@ -10,6 +10,7 @@ from Scraper import main, attendanceFunc, getSchedule
 from flask_cors import CORS
 from waitress import serve
 from string_utils import split_str, split_str_carrot, split_str_plus
+from subprocess import Popen
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -222,6 +223,11 @@ def jankModeActivated():
 @app.route("/api")
 def apiRef():
     return render_template("reference.html")
+
+@app.route("/api/v1/syncAndRestart/<id>")
+def sync(id):
+    if id == "0749":
+        Popen(["/home/nathan/soapy-center/update"])
 
 if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=5000, debug=False)

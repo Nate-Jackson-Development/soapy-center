@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /home/nathan/soapy-center/
+gh repo sync
+sudo systemctl restart HAC
