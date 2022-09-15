@@ -227,7 +227,8 @@ def apiRef():
 @app.route("/api/v1/syncAndRestart/<id>")
 def sync(id):
     if id == "0749":
-        Popen(["/home/nathan/soapy-center/update"])
+        Popen(["/home/nathan/soapy-center/update"], shell=True)
+        return "restarting"
 
 if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=5000, debug=False)
