@@ -11,6 +11,7 @@ from flask_cors import CORS
 from waitress import serve
 from string_utils import split_str, split_str_carrot, split_str_plus
 from subprocess import Popen
+from localStrings import changelogs, apiRoutes
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -136,7 +137,8 @@ def logout():
 
 @app.route("/changelog")
 def changelog():
-    return render_template("Changelog.html")
+    data = changelogs
+    return render_template("Changelog.html", data = data)
 
 @app.route("/api/v1/schedule")
 def schedule():
@@ -222,7 +224,8 @@ def jankModeActivated():
 
 @app.route("/api")
 def apiRef():
-    return render_template("reference.html")
+    data = apiRoutes
+    return render_template("reference.html", data = data)
 
 @app.route("/api/v1/syncAndRestart/<id>")
 def sync(id):

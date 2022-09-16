@@ -23,6 +23,9 @@
                     Route
                 </td>
                 <td>
+                    Method
+                </td>
+                <td>
                     Type
                 </td>
                 <td>
@@ -31,50 +34,22 @@
             </tr>
         </thead>
         <tbody>
+            {% for ref in data %}
             <tr>
                 <td>
-                    /api/v1
+                    {{ref[0]}}
                 </td>
                 <td>
-                    JSON List
+                    {{ref[1]}}
                 </td>
                 <td>
-                    A JSON list of classnames and grade seperated with a colon
+                    {{ref[2]}}
+                </td>
+                <td>
+                    {{ref[3]}}
                 </td>
             </tr>
-            <tr>
-                <td>
-                    /api/v1/&lt;classnum&gt;/Assignments
-                </td>
-                <td>
-                    JSON List
-                </td>
-                <td>
-                    A Json list of assignments for the selected class
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    /api/v1/points/&lt;clsnum&gt;
-                </td>
-                <td>
-                    JSON list
-                </td>
-                <td>
-                    A JSON list of the point grade for each assignment in the selected class
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    /api/v1/schedule
-                </td>
-                <td>
-                    JSON list
-                </td>
-                <td>
-                    A JSON list of the users schedule
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
