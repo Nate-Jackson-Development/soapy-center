@@ -299,8 +299,3 @@ def getSchedule(username, password):
         elemsList.append(elms)
 
     return elemsList
-
-if __name__ == "__main__":
-    a = getSchedule("mooren", "Basd1010749")
-    print(a)
-    # print(getSchedule("mooren", "Basd1010749"))
