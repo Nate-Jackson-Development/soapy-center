@@ -18,6 +18,16 @@ body {
 }
 */
 
+.auth {
+    width: 25%
+}
+
+@media only screen and (min-width: 600px) {
+    .auth {
+        width 75%
+    }
+} 
+
 /* Specifically for class_item.html 
    used to display a certain class's
    basic info 
