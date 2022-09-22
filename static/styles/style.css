@@ -19,14 +19,10 @@ body {
 */
 
 .auth {
-    width: 25%
+    width: 20em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
-
-@media only screen and (min-width: 600px) {
-    .auth {
-        width 75%
-    }
-} 
 
 /* Specifically for class_item.html 
    used to display a certain class's
