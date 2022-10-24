@@ -227,12 +227,6 @@ def apiRef():
     data = apiRoutes
     return render_template("reference.html", data = data)
 
-@app.route("/api/v1/syncAndRestart/<id>")
-def sync(id):
-    if id == "0749":
-        Popen(["/home/nathan/soapy-center/update"], shell=True)
-        return "restarting"
-
 if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=5000, debug=False)
     serve(app, host='::', port=5000, threads=4)
