@@ -18,6 +18,10 @@ body {
 }
 */
 
+.auth-select {
+    margin-top: 2rem;
+}
+
 .auth {
     width: 20em;
     margin-left: 1em;

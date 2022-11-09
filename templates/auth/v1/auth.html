@@ -36,6 +36,17 @@ redirect here from index if not logged in-->
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password" style="margin-top: 2em;">
                         <label for="password">Password</label>
                     </div>
+                    <div class="form-floating mb-1 auth-select auth input-group" style="color:black;">
+                        <span class="input-group-text" id="basic-addon1">Grading Period</span>
+                        <select name="gradingPeriod" id="gradingPeriod" class="form-control">
+                            <!-- <option value="ALL">(All Runs)</option> -->
+                            <option selected="selected" value="1-2023">1</option>
+                            <option value="2-2023">2</option>
+                            <option value="3-2023">3</option>
+                            <option value="4-2023">4</option>
+                        </select>
+                    </div>
+                    
                     <button type="submit" class="btn btn-outline-light" style="width: 10em; height: 3em; margin-top: 2em;"><i class="fas fa-sign-in-alt"></i> Proceed</button>
                 </form>
             </div>

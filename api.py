@@ -22,11 +22,12 @@ app.secret_key = 'super secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-def getData(username, password):
+def getData(username, password, gradingPeriod = "1-2023"):
     # test if credentials work
-    data, data2, data3, data4, data5 = main(username, password)
-
-    
+    try:
+        data, data2, data3, data4, data5 = main(username, password, gradingPeriod)
+    except Exception as e:
+        print(e)
     
 
     session['authenticated'] = True
@@ -64,16 +65,14 @@ def auth():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        period = request.form["gradingPeriod"]
 
         session['username'] = username
         session['password'] = password
 
-        cook.set_cookie('u', username, max_age=60*60*24*365*2)
-        cook.set_cookie('p', password, max_age=60*60*24*365*2)
-
         #print(username, password)
         try:
-            getData(username, password)
+            getData(username, password, period)
 
             return cook
 
@@ -90,14 +89,15 @@ def auth():
         # show the form
         return render_template('auth/v1/auth.html', err = "0")
 
-@app.route('/refresh')
+@app.route('/refresh', methods=['GET', 'POST'])
 def refresh():
 
-    username = request.cookies.get('u')
-    password = request.cookies.get('p')
-
     try:
-        getData(username, password)
+        if request.method == "POST":
+            getData(username, password, request.form["gradingPeriod"])
+        else:
+            getData(username, password)
+        # redirect(url_for('auth'))
     except:
         redirect(url_for('auth'))
 
@@ -110,7 +110,8 @@ def home():
             pass
         else:
             return redirect(url_for("auth"))
-    except:
+    except BaseException as e:
+        print(e)
         return redirect(url_for("auth"))
 
 
@@ -158,7 +159,8 @@ def api_id():
             pass
         else:
             return redirect(url_for("auth"))
-    except:
+    except BaseException as e:
+        print(e)
         return redirect(url_for("auth"))
     a = session['class_avg']
     return str(json.dumps(a, indent=2))# + "<br><br>" + str(b)

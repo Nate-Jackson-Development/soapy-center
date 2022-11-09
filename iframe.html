@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><title>
+	HomeAccess
+</title>
+    
+    <link href="/HomeAccess/Stylesheets/Themes/custom-theme/jquery?v=khU3GP_ixo8tMiLwXJEqkRywEE1c7SBpfpbj4KSDyXA1" rel="Stylesheet" type="text/css" /> 
+
+    
+    <link rel="Stylesheet" href="../../eSchoolPLUSResource/GetEmbeddedStyle?file=CrossSite" />
+    <link rel="Stylesheet" href="../../eSchoolPLUSResource/GetEmbeddedStyle?file=ComboBox" />
+    <link rel="Stylesheet" href="../../Stylesheets/Common/font-awesome.css" />
+    
+    
+    <link rel="Stylesheet" href="../../Stylesheets/Site.css" />
+    <link rel="stylesheet" href="../../Stylesheets/Frame/Frame.css" /> 
+    <link rel="SHORTCUT ICON" href="../../Media/Themes/Base/Common/favicon.ico"/>
+    <style>
+        .sg-asp-table-header-row,
+        .ui-jqgrid-view .ui-jqgrid-hdiv, 
+        .ui-jqgrid tr.ui-jqgrid-labels th  {
+	        background-color: #00427c;
+            color: #FFFFFF;
+        }
+    </style>
+
+    <script src="/HomeAccess/Scripts/libs/jquery?v=kFkgd6hNofX_b_JGNSXAqVYLW6XzxJEd8j1YdcwKx3I1" type="text/javascript"></script>   
+    <script src="../../Scripts/libs/modernizr-2.8.3.js" type="text/javascript"></script>   
+    <script src="../../Scripts/Trirand/ui.multiselect.js" type="text/javascript" ></script>
+    <script src="../../Scripts/Trirand/i18n/grid.locale-en.js" type="text/javascript"></script>
+    <script src="../../Scripts/Trirand/jquery.jqGrid.js" type="text/javascript"></script>
+    <script src="../../Scripts/libs/json2.js" type="text/javascript"></script>
+    <script src="../../eSchoolPLUSResource/GetEmbeddedScript?file=SungardCommon" type="text/javascript"></script>    
+    <script src="../../eSchoolPLUSResource/GetEmbeddedScript?file=Combobox" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            parseForComboBoxes();
+        });
+    </script>    
+    
+
+    <script type="text/javascript">
+        $(SunGard.Common.Init('/HomeAccess/'));
+    </script>
+    
+    
+    
+    <link href="../../Stylesheets/Assignments/AssignmentsStyle.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Assignments.js"></script>
+    <script type="text/javascript" src="OpenClassPopUp.js"></script>
+    <script type="text/javascript" src="../Common/functional.js"></script>
+    <script type="text/javascript" src="../Common/Validation.js"></script>
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript">
+        $(function () {
+            $('.comment-tooltip').tooltip({ tooltipClass: "comment-tooltip-hover" });
+        });
+    </script>
+
+</head>
+<body>
+    
+    <div id='MainContent' class='sg-main-content'>
+        <div class='sg-hac-content'>
+            <form method="post" action="./Assignments.aspx" id="fmMain">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="GkLsJtD+kRTFccVjXqzbNn1Dz8Te8K3Jl9ZVyfokkf1dq/Ec89CB27MVbNHLaUOI+rEgxbjYjGQhY5060mmVLaPiN4yBG2SNC8z2baNR/+qh3zbsgec/jRx4QMs/e8oz9uuNAnjC1as3rLw1K3CFkDV9R8/2Rz4Ij1u48woMUpJNqe7YtJy9ZW+iqAn3L9j3a7fMtE5AufAkHL/PVdRS0AOGY3laffk3PMNrAbV5Na5ra3yhyJsvfStSGiCXPXtv4DiBiNTOA6FsnV/LcnvGUFlh4Q5AubV9AlkwZsd82l1MdGShedZu6TjBOSRwOHi5c8h80K8K1Ocl2vRw8Py4sLbOyxGdWpDhzVpnn4LIAvNStQc3uGyajK+JxzIBddiKtW5FrLTjRS7YmfWiGTWiho4mJnXcKzdNPaZjSQnIVmhiR2yVk/IRYt6C34TDnih6Uuy0mZbQfsFni0n/OtvFAbMbi0giZ1f7WWHs6huMng//lQ64sqIpcJ8YVicU2G9x457OZHTz9LrUz4YF9baoaD/YZsM+5gD8jq+L1GwyGGqJKOwImsgvsSa/rU5o9boc8o7KACA988FfJSfWJ/kd09vmT70L1UKahL6Vh/6ncdm1azIhmnwF13zHAERBvE9u+HzvTXt8IveJuB5tuhoypjcUq1eHIRjOovDKyiFP+bpkB9oBq/AOOh3nVFbyZKzHkK6QEcRbngfvjggYsL8ph8+nclKamWytyjhfMlci9+MYIzZ2pZStSTHlhfYnZg4bgfBnJuy3XiNzZNSkc8euorxLMRNa7VdAChF2BY26oe9iGetA5ExcAKZv3Y2m9Y/wivChZDC/jzbF2tyoxcF2q81wSfHLSr2ieMdPWwvftMYWenAjdxgtb3o46Jw4epsjQSmddecMPSaOE1nFzpcfyX+plgqAvyW3fgsARqlhVzZLDgdhWTJi96I3t6Ybi4iqhxz6E4rAtJKKLCyITbRwgWBNLDU5MyRlstDFMUAfPJ3OibXRDsKzjeKNNQZkOZ4V//GnD2Sbx48vTj/snuCpjldWNBaNLpLc81AMf7foAvmoZ9tM4cfmWbURrsLOzRJ2gVwX7A8hnrje/k+QjMX2RqJ3bU3LJJcLOuokv/nHMqaLojQ2a3zqGcpqrpcpMGyX" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B0093F3C" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="G+O53FOgVrdUNqs1jLkvX8MFO2SqrVmc1DHrv57H4evN2nXhEz5bYk8qDCDEuxZKyPBjJfVgG69vutTP8+4zVrj3NDkzYFhjgb/onX2mrZTpCHts78HgxFobMOzqYpLIt8oKpXWqe8jo1ahabZOWTp4pmGYXhYJjF1+YG+A51Pm0L4173Lonoj/rckbpAlplv+TKfLtCmIVgAAsDQH4vkJxnn4y4QlUly4Y/Cr550sCUebGOxZtge/nP6v0EBxlgree7kcel9lLrDWAz9U+QGEsJvrcrxkvXIISdH3rjpUsyMObubCOCjMFfrb1gHXNfARikP4R9Do5fXut2fFY39+Ix8GfkGz9OWIINSzJaUSwS8ovS2jmtyV1UIy5cBs0yVNdBkjEcWq9ofqd+7c5/DgyUx5w+Sj5yt/FaMXFGtWQ4h15JqsVlzBtCCtOmGe0yOTFMYTFI7dUrrxqLvL2Z6VEu6mdMNJbKe9VrKXFAH1RafzkSC47KBNVG/m3KiL6e6S4hTmpggVcer7Daf+63Qxk7miKNPJA3NeGUfFt+1mVHD4LXfuxYgtUxVivgpRtHpNt1xMOJ5Y3GShBh+sbD2JPsg70xX2e988lXqF5QtScyW8IUEic4Koz/32MJ6+NwSoDETNGTU+aZ96fpC+9iOjRWxJGd6mQSGJ1vGYywwItHVXfrOvhrOZsW54/YFiGn9THypDhh05DOJjftOBnWMgLebTwIja7Djl6CVGu8/LkuuMEK2WQ8IU88Vih0YnYAcgv06cvJMEIvtfm+cOrZZ3lw0mMEhtiFsyteA2v2xmJO0q63PGdZJS2GemdRr/1hCcgz3o0smOc1q2Ikr0znBlaZT93taQ6esTV3mYSsmT5e9Nv3DnOIU65jCEUWJOAJMkKIWIFjEXvWQf8bdRHor+KxrJjRDvvgAOO1Ybm0kbbBeqH49hO4bH0bzCCzty5GsKr7l/1LMLGjElxqqO4Ssot9cZ9Fpjx4Nq5d5ynnFBklOTb7k3rDYpSSy6eiQkQEGpdgcUYIUULWf52GWWWhHci8WHCv9IWbN0eRedZmj1Ou3fQuR4qlkLtydin1O2qxfJ0hSaRKoafEGOtqQDGskAaStj5Nvac+oSYw5hlEfIPNPgUddA+LTUiA5HX7gyTQ8WsZZXVRwxzihLniFpLQCSFlMFRSmZaxlNpYfH+qYkAduTsh+PIqsqi1yWjkEXo9YPlKtp86KtO4tNXJOHyMs85ZXrukQqQey5TUxMPRUmKX1eknN0nAPZhbphEYZV2IxRN+BdJyH0jtwnBWFkW7g4UrID0W0KW5bkYxhoDosjsk9k8SUJIvWuBUX28ntysyFGA5hVP2E8+6aAP9qWcxDZf1FkVNo63qzoipPgZUbaD0PhuaJnGny2LW9qSdbEZ65F5fbCPAH/bIZLcMzGBEHK0oDqoq40WXlOB8SN/0c4N/Vy5pZbGlGCOcXZrBY3Eq" />
+                
+<div class="sg-header">
+		<input name="ctl00$plnMain$hdnValidMHACLicense" type="hidden" id="plnMain_hdnValidMHACLicense" value="Y" />
+        <input name="ctl00$plnMain$hdnIsVisibleClsWrk" type="hidden" id="plnMain_hdnIsVisibleClsWrk" value="N" />
+        <input name="ctl00$plnMain$hdnIsVisibleCrsAvg" type="hidden" id="plnMain_hdnIsVisibleCrsAvg" value="N" />
+        <input name="ctl00$plnMain$hdnJsAlert" type="hidden" id="plnMain_hdnJsAlert" value="Averages cannot be displayed when  Report Card Run is set to (All Runs)." />
+        <input name="ctl00$plnMain$hdnTitle" type="hidden" id="plnMain_hdnTitle" value="Classwork" />
+        <input name="ctl00$plnMain$hdnLastUpdated" type="hidden" id="plnMain_hdnLastUpdated" value="Last Updated" />
+        <input name="ctl00$plnMain$hdnDroppedCourse" type="hidden" id="plnMain_hdnDroppedCourse" value=" This course was dropped as of " />
+        <input name="ctl00$plnMain$hdnddlClasses" type="hidden" id="plnMain_hdnddlClasses" value="(All Classes)" /> 
+        <input name="ctl00$plnMain$hdnddlCompetencies" type="hidden" id="plnMain_hdnddlCompetencies" value="(All Classes)" /> 
+        <input name="ctl00$plnMain$hdnCompDateDue" type="hidden" id="plnMain_hdnCompDateDue" value="Date Due" /> 
+        <input name="ctl00$plnMain$hdnCompDateAssigned" type="hidden" id="plnMain_hdnCompDateAssigned" value="Date Assigned" /> 
+        <input name="ctl00$plnMain$hdnCompCourse" type="hidden" id="plnMain_hdnCompCourse" value="Course" /> 
+        <input name="ctl00$plnMain$hdnCompAssignment" type="hidden" id="plnMain_hdnCompAssignment" value="Assignment" /> 
+        <input name="ctl00$plnMain$hdnCompAssignmentLabel" type="hidden" id="plnMain_hdnCompAssignmentLabel" value="Assignments Not Related to Any Competency" /> 
+        <input name="ctl00$plnMain$hdnCompNoAssignments" type="hidden" id="plnMain_hdnCompNoAssignments" value="No assignments found" /> 
+        <input name="ctl00$plnMain$hdnCompNoClasswork" type="hidden" id="plnMain_hdnCompNoClasswork" value="Classwork could not be found for this competency for the selected report card run." /> 
+        <input name="ctl00$plnMain$hdnCompScore" type="hidden" id="plnMain_hdnCompScore" value="Score" /> 
+        <input name="ctl00$plnMain$hdnCompPoints" type="hidden" id="plnMain_hdnCompPoints" value="Points" /> 
+        <input name="ctl00$plnMain$hdnddlReportCardRuns1" type="hidden" id="plnMain_hdnddlReportCardRuns1" value="(All Runs)" /> 
+        <input name="ctl00$plnMain$hdnddlReportCardRuns2" type="hidden" id="plnMain_hdnddlReportCardRuns2" value="(All Terms)" /> 
+        <input name="ctl00$plnMain$hdnbtnShowAverage" type="hidden" id="plnMain_hdnbtnShowAverage" value="Show All Averages" />
+        <input name="ctl00$plnMain$hdnShowAveragesToolTip" type="hidden" id="plnMain_hdnShowAveragesToolTip" value="Show all student&#39;s averages" />
+        <input name="ctl00$plnMain$hdnPrintClassworkToolTip" type="hidden" id="plnMain_hdnPrintClassworkToolTip" value="Print all classwork" />
+        <input name="ctl00$plnMain$hdnPrintClasswork" type="hidden" id="plnMain_hdnPrintClasswork" value="Print Classwork" />
+        <input name="ctl00$plnMain$hdnCollapseToolTip" type="hidden" id="plnMain_hdnCollapseToolTip" value="Collapse all courses" />
+        <input name="ctl00$plnMain$hdnCollapse" type="hidden" id="plnMain_hdnCollapse" value="Collapse All" />
+        <input name="ctl00$plnMain$hdnFullToolTip" type="hidden" id="plnMain_hdnFullToolTip" value="Switch courses to Full View" />
+        <input name="ctl00$plnMain$hdnViewFull" type="hidden" id="plnMain_hdnViewFull" value="Full View" />
+        <input name="ctl00$plnMain$hdnQuickToolTip" type="hidden" id="plnMain_hdnQuickToolTip" value="Switch courses to Quick View" />
+        <input name="ctl00$plnMain$hdnViewQuick" type="hidden" id="plnMain_hdnViewQuick" value="Quick View" />
+        <input name="ctl00$plnMain$hdnExpand" type="hidden" id="plnMain_hdnExpand" value="Expand All" />
+        <input name="ctl00$plnMain$hdnExpandToolTip" type="hidden" id="plnMain_hdnExpandToolTip" value="Expand all courses" />
+        <input name="ctl00$plnMain$hdnChildCompetencyMessage" type="hidden" id="plnMain_hdnChildCompetencyMessage" value="This competency is calculated as an average of the following competencies" />
+        <input name="ctl00$plnMain$hdnCompetencyScoreLabel" type="hidden" id="plnMain_hdnCompetencyScoreLabel" value="Grade" />
+        <input name="ctl00$plnMain$hdnAverageDetailsDialogTitle" type="hidden" id="plnMain_hdnAverageDetailsDialogTitle" value="Average Details" />
+        <input name="ctl00$plnMain$hdnAssignmentCompetency" type="hidden" id="plnMain_hdnAssignmentCompetency" value="Assignment Competency" />
+        <input name="ctl00$plnMain$hdnAssignmentCourse" type="hidden" id="plnMain_hdnAssignmentCourse" value="Assignment Course" />
+        <input name="ctl00$plnMain$hdnTooltipTitle" type="hidden" id="plnMain_hdnTooltipTitle" value="Title" />
+        <input name="ctl00$plnMain$hdnCategory" type="hidden" id="plnMain_hdnCategory" value="Category" />
+        <input name="ctl00$plnMain$hdnDueDate" type="hidden" id="plnMain_hdnDueDate" value="Due Date" />
+        <input name="ctl00$plnMain$hdnMaxPoints" type="hidden" id="plnMain_hdnMaxPoints" value="Max Points" />
+        <input name="ctl00$plnMain$hdnCanBeDropped" type="hidden" id="plnMain_hdnCanBeDropped" value="Can Be Dropped" />
+        <input name="ctl00$plnMain$hdnHasAttachments" type="hidden" id="plnMain_hdnHasAttachments" value="Has Attachments" />
+        <input name="ctl00$plnMain$hdnExtraCredit" type="hidden" id="plnMain_hdnExtraCredit" value="Extra Credit" />
+        <input name="ctl00$plnMain$hdnType" type="hidden" id="plnMain_hdnType" value="Type" />
+        <input name="ctl00$plnMain$hdnAssignmentDataInfo" type="hidden" id="plnMain_hdnAssignmentDataInfo" value="Information could not be found for the assignment" />
+
+        <span id="plnMain_spnView"><button id="btnView" onclick="btnView_onclick(); return false;" class="sg-button sg-right sg-5px-margin btnView" title="Switch courses to Full View">Full View</button></span>        
+        <button id="plnMain_btnCollapseExpand" type="button" class="sg-button sg-right sg-5px-margin btnCollapseExpand" title="Collapse all courses" onClick="javascript:return btnCollapseExpand_onclick(event);">Collapse All</button>
+        <button id="plnMain_btnPrintClasswork" onclick="btnPrintClasswork_onclick()" type="button" class="sg-button sg-right sg-5px-margin btnPrintClassworkAction">Print Classwork</button>
+    </div>
+    <div id="plnMain_pnlFullPage" class="sg-content-grid">
+	
+        <div class="sg-content-grid-container sg-container-content">
+            <div>
+                <span id="plnMain_lblViewClassworkfor"><b>View Classwork for</b></span>
+                
+                
+            <span id="plnMain_lblForRCardRun"><b>Report Card Run</b></span>
+            
+                <select name="ctl00$plnMain$ddlReportCardRuns" id="plnMain_ddlReportCardRuns" class="sg-combobox">
+		<option value="ALL">(All Runs)</option>
+		<option selected="selected" value="1-2023">1</option>
+		<option value="2-2023">2</option>
+		<option value="3-2023">3</option>
+		<option value="4-2023">4</option>
+
+	</select>
+             
+                <button onclick="__doPostBack('ctl00$plnMain$btnRefreshView','')" id="plnMain_btnRefreshView" type="button" class="sg-button sg-right">Refresh View</button>
+            </div>
+            <div>
+                <label id="plnMain_lblShow">Show</label>
+                <span id="plnMain_spnCourse" class="asmt-course" style="display:;"><select name="ctl00$plnMain$ddlClasses" id="plnMain_ddlClasses" class="sg-combobox">
+		<option selected="selected" value="ALL">(All Classes)</option>
+		<option value="432907|1">CIH000 - 2    Citizenship</option>
+		<option value="432911|1">CTE002 - 1    BAVTS PM Session (4 credit)</option>
+		<option value="433078|1">EN4001 - 1    English 12</option>
+		<option value="433605|1">HFC909 - 2    Physical Education</option>
+		<option value="433244|1">MA5000 - 1    AP Calculus</option>
+		<option value="433245|1">MA5010 - 1    AP Calculus AB Extension</option>
+		<option value="433246|1">MA5020 - 1    AP Calculus BC Extension</option>
+		<option value="433358|1">SC3002 - 3    Physics</option>
+
+	</select></span>
+                <span id="plnMain_spnCompetency" class="asmt-competency" style="display:none;"><select name="ctl00$plnMain$ddlCompetencies" id="plnMain_ddlCompetencies" class="sg-combobox">
+		<option selected="selected" value="ALL">(All Classes)</option>
+
+	</select></span>
+                <label id="plnMain_lblOrderBy">Order by</label>
+                <span class="asmt-order"><select name="ctl00$plnMain$ddlOrderBy" id="plnMain_ddlOrderBy" class="sg-combobox">
+		<option selected="selected" value="Class">Class</option>
+		<option value="Date">Date Due</option>
+
+	</select></span>
+                   
+            </div>
+               
+        </div>
+        <div id="dvAlerts" class="sg-content-alert-container sg-container-content">
+            
+            
+        </div>
+    
+    
+    
+    
+        <div class="AssignmentClass">
+            <div class="sg-header sg-header-square">
+                 
+                 
+                    <a class="sg-header-heading" href="#" onclick="OpenClassPopUpWithMarkingPeriod('432907',1); return false;">
+                        CIH000 - 2    Citizenship
+                    </a>    
+                <span id="plnMain_rptAssigmnetsByCourse_lblLastUpdDate_0" class="sg-header-sub-heading"></span>
+                
+                <span id="plnMain_rptAssigmnetsByCourse_lblHdrAverage_0" class="sg-header-heading sg-right" title=""></span>    
+            </div>
+            <div class="sg-content-grid">
+                
+                <div class="sg-asp-table-group">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="AssignmentClass">
+            <div class="sg-header sg-header-square">
+                 
+                 
+                    <a class="sg-header-heading" href="#" onclick="OpenClassPopUpWithMarkingPeriod('432911',1); return false;">
+                        CTE002 - 1    BAVTS PM Session (4 credit)
+                    </a>    
+                <span id="plnMain_rptAssigmnetsByCourse_lblLastUpdDate_1" class="sg-header-sub-heading"></span>
+                
+                <span id="plnMain_rptAssigmnetsByCourse_lblHdrAverage_1" class="sg-header-heading sg-right" title=""></span>    
+            </div>
+            <div class="sg-content-grid">
+                
+                <div class="sg-asp-table-group">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="AssignmentClass">
+            <div class="sg-header sg-header-square">
+                <button id="plnMain_rptAssigmnetsByCourse_btnShowHide_2" type="button" class="sg-button sg-button-show-hide sg-left sg-5px-margin icon-minus" aria-label="Show/Hide" onClick="javascript:return btnShowHide_onclick(event);"></button> 
+                 
+                    <a class="sg-header-heading" href="#" onclick="OpenClassPopUpWithMarkingPeriod('433078',1); return false;">
+                        EN4001 - 1    English 12
+                    </a>    
+                <span id="plnMain_rptAssigmnetsByCourse_lblLastUpdDate_2" class="sg-header-sub-heading"></span>
+                
+                <span id="plnMain_rptAssigmnetsByCourse_lblHdrAverage_2" class="sg-header-heading sg-right" title=""></span>    
+            </div>
+            <div class="sg-content-grid">
+                <table class="sg-asp-table" cellspacing="0" rules="all" border="1" id="plnMain_rptAssigmnetsByCourse_dgCourseAssignments_2">
+		<tr class="sg-asp-table-header-row">
+			<td>Date Due</td><td>Date Assigned</td><td>Assignment</td><td>Category</td><td>Score</td><td>Total Points</td><td class="sg-view-quick">Weight</td><td class="sg-view-quick">Weighted Score</td><td class="sg-view-quick">Weighted Total Points</td><td class="sg-view-quick">Percentage</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/27/2022</td><td>10/24/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 9 Classwork
+Category: Class Work
+Due Date: 10/27/2022
+Max Points: 53.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '12'); return false;">
+                                    Week 9 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                52.00
+                            </td><td>53.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">52.00</td><td class="sg-view-quick">53.00</td><td class="sg-view-quick">98.113%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/27/2022</td><td>08/29/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Class Participation
+Category: Class Work
+Due Date: 10/27/2022
+Max Points: 50.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '7'); return false;">
+                                    Class Participation
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                50.00
+                            </td><td>50.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">50.00</td><td class="sg-view-quick">50.00</td><td class="sg-view-quick">100.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/21/2022</td><td>10/17/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 8 Classwork
+Category: Class Work
+Due Date: 10/21/2022
+Max Points: 48.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '11'); return false;">
+                                    Week 8 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                40.00
+                            </td><td>48.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">40.00</td><td class="sg-view-quick">48.00</td><td class="sg-view-quick">83.333%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/14/2022</td><td>10/11/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 7 Classwork
+Category: Class Work
+Due Date: 10/14/2022
+Max Points: 73.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '10'); return false;">
+                                    Week 7 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                60.00
+                            </td><td>73.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">60.00</td><td class="sg-view-quick">73.00</td><td class="sg-view-quick">82.192%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/14/2022</td><td>10/11/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Unit 1 Writing Sample
+Category: Class Work
+Due Date: 10/14/2022
+Max Points: 100.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '9'); return false;">
+                                    Unit 1 Writing Sample
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                98.00
+                            </td><td>100.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">98.00</td><td class="sg-view-quick">100.00</td><td class="sg-view-quick">98.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/07/2022</td><td>10/03/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 6 Classwork
+Category: Class Work
+Due Date: 10/07/2022
+Max Points: 58.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '6'); return false;">
+                                    Week 6 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                58.00
+                            </td><td>58.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">58.00</td><td class="sg-view-quick">58.00</td><td class="sg-view-quick">100.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/03/2022</td><td>10/03/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Unit 1 Assessment (Monday, 2/28)
+Category: Class Work
+Due Date: 10/03/2022
+Max Points: 50.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '8'); return false;">
+                                    Unit 1 Assessment (Monday, 2/28)
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                32.00
+                            </td><td>50.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">32.00</td><td class="sg-view-quick">50.00</td><td class="sg-view-quick">64.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/30/2022</td><td>09/26/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 5 Classwork
+Category: Class Work
+Due Date: 09/30/2022
+Max Points: 80.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '5'); return false;">
+                                    Week 5 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                75.00
+                            </td><td>80.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">75.00</td><td class="sg-view-quick">80.00</td><td class="sg-view-quick">93.750%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/23/2022</td><td>09/19/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 4 Classwork
+Category: Class Work
+Due Date: 09/23/2022
+Max Points: 83.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '4'); return false;">
+                                    Week 4 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                70.00
+                            </td><td>83.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">70.00</td><td class="sg-view-quick">83.00</td><td class="sg-view-quick">84.337%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/16/2022</td><td>09/12/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 3 Classwork
+Category: Class Work
+Due Date: 09/16/2022
+Max Points: 62.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '3'); return false;">
+                                    Week 3 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                50.00
+                            </td><td>62.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">50.00</td><td class="sg-view-quick">62.00</td><td class="sg-view-quick">80.645%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/09/2022</td><td>09/06/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 2 Classwork
+Category: Class Work
+Due Date: 09/09/2022
+Max Points: 76.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '2'); return false;">
+                                    Week 2 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                73.00
+                            </td><td>76.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">73.00</td><td class="sg-view-quick">76.00</td><td class="sg-view-quick">96.053%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/02/2022</td><td>08/29/2022</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Week 1 Classwork
+Category: Class Work
+Due Date: 09/02/2022
+Max Points: 45.00
+Can Be Dropped: N
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433078', '1', '1'); return false;">
+                                    Week 1 Classwork
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                45.00
+                            </td><td>45.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">45.00</td><td class="sg-view-quick">45.00</td><td class="sg-view-quick">100.000%</td>
+		</tr>
+	</table>
+                <div class="sg-asp-table-group">
+                    <span id="plnMain_rptAssigmnetsByCourse_lblCategories_2" class="LabelCatogery">
+                        <div class="sg-view-quick sg-clearfix" >
+                            <div class="sg-header-group">
+                                <label id="plnMain_rptAssigmnetsByCourse_hdrCategories_2" CssClass="sg-header-heading">Categories</label>
+                            </div>
+                            <table class="sg-asp-table" cellspacing="0" rules="all" border="1" id="plnMain_rptAssigmnetsByCourse_dgCourseCategories_2">
+		<tr class="sg-asp-table-header-row">
+			<td align="center" valign="middle">Category</td><td align="center" valign="middle">Student's<br>Points</td><td align="center" valign="middle"> / Maximum<br>Points</td><td align="center" valign="middle"> = Percent</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>Class Work</td><td>703.0000</td><td>778.00</td><td>90.359%</td>
+		</tr><tr bgcolor="#CCCCCC">
+			<td><font color="White"><b>Total Points:</b></font></td><td><font color="White"><b>703.00</b></font></td><td><font color="White"><b>778.00</b></font></td><td><font color="White"><b>90.3599%</b></font></td>
+		</tr>
+	</table>
+                            <br />
+                            
+                                <div style="display:inline-block;">
+                                <table id="plnMain_rptAssigmnetsByCourse_tblAverage_2">
+		<tr>
+			<td><b><span id="plnMain_rptAssigmnetsByCourse_lblStudentOvAverage_2">Course overall average is:</span></b></td><td><b><span id="plnMain_rptAssigmnetsByCourse_lblStuPoints_2">703.00</span></b></td><td><b>/</b></td><td><b><span id="plnMain_rptAssigmnetsByCourse_lblMaxPoints_2">778.00</span></b></td><td><b>=</b></td><td style="text-align: right"><b><span id="plnMain_rptAssigmnetsByCourse_lblOverallAverage_2">90.36</span></b></td><td><b>%</b></td>
+		</tr>
+	</table>
+                            </div>
+                            <span id="plnMain_rptAssigmnetsByCourse_lblShowAverages_2" class="sg-right">
+                                <button class="LabelCatogery sg-button"  id="btnShowAverages" onclick="btnShowAverages_onclick('433078', '1'); return false;" title="Show all student's averages"  >Show All Averages</button>	
+                            </span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="AssignmentClass">
+            <div class="sg-header sg-header-square">
+                <button id="plnMain_rptAssigmnetsByCourse_btnShowHide_3" type="button" class="sg-button sg-button-show-hide sg-left sg-5px-margin icon-minus" aria-label="Show/Hide" onClick="javascript:return btnShowHide_onclick(event);"></button> 
+                 
+                    <a class="sg-header-heading" href="#" onclick="OpenClassPopUpWithMarkingPeriod('433244',1); return false;">
+                        MA5000 - 1    AP Calculus
+                    </a>    
+                <span id="plnMain_rptAssigmnetsByCourse_lblLastUpdDate_3" class="sg-header-sub-heading"></span>
+                
+                <span id="plnMain_rptAssigmnetsByCourse_lblHdrAverage_3" class="sg-header-heading sg-right" title=""></span>    
+            </div>
+            <div class="sg-content-grid">
+                <table class="sg-asp-table" cellspacing="0" rules="all" border="1" id="plnMain_rptAssigmnetsByCourse_dgCourseAssignments_3">
+		<tr class="sg-asp-table-header-row">
+			<td>Date Due</td><td>Date Assigned</td><td>Assignment</td><td>Category</td><td>Score</td><td>Total Points</td><td class="sg-view-quick">Weight</td><td class="sg-view-quick">Weighted Score</td><td class="sg-view-quick">Weighted Total Points</td><td class="sg-view-quick">Percentage</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/31/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Optional HIH Chp 3
+Category: Homework
+Due Date: 10/31/2022
+Max Points: 15.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '11'); return false;">
+                                    Optional HIH Chp 3
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Homework</td><td>
+                                13.00
+                            </td><td>15.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">13.00</td><td class="sg-view-quick">15.00</td><td class="sg-view-quick">86.667%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/25/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Correction to Optional HiH
+Category: Class Work
+Due Date: 10/25/2022
+Max Points: 10.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '10'); return false;">
+                                    Correction to Optional HiH
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                10.00
+                            </td><td>10.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">10.00</td><td class="sg-view-quick">10.00</td><td class="sg-view-quick">100.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/24/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Optional HiH Chp 3.1-4
+Category: Class Work
+Due Date: 10/24/2022
+Max Points: 10.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '9'); return false;">
+                                    Optional HiH Chp 3.1-4
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                10.00
+                            </td><td>10.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">10.00</td><td class="sg-view-quick">10.00</td><td class="sg-view-quick">100.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/12/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 2 Optional HW
+Category: Homework
+Due Date: 10/12/2022
+Max Points: 50.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '8'); return false;">
+                                    Chp 2 Optional HW
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Homework</td><td>
+                                42.00
+                            </td><td>50.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">42.00</td><td class="sg-view-quick">50.00</td><td class="sg-view-quick">84.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/12/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 2 Test Calculator
+Category: Test
+Due Date: 10/12/2022
+Max Points: 30.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '7'); return false;">
+                                    Chp 2 Test Calculator
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Test</td><td>
+                                24.00
+                            </td><td>30.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">24.00</td><td class="sg-view-quick">30.00</td><td class="sg-view-quick">80.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/12/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 2 Test No Calculator
+Category: Test
+Due Date: 10/12/2022
+Max Points: 70.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '6'); return false;">
+                                    Chp 2 Test No Calculator
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Test</td><td>
+                                39.00
+                            </td><td>70.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">39.00</td><td class="sg-view-quick">70.00</td><td class="sg-view-quick">55.714%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>10/03/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 2.2-4 Optional HW
+Category: Class Work
+Due Date: 10/03/2022
+Max Points: 15.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '5'); return false;">
+                                    Chp 2.2-4 Optional HW
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Class Work</td><td>
+                                
+                            </td><td>15.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">&nbsp;</td><td class="sg-view-quick">15.00</td><td class="sg-view-quick">&nbsp;</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/19/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 1 Test Calculator
+Category: Test
+Due Date: 09/19/2022
+Max Points: 30.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '4'); return false;">
+                                    Chp 1 Test Calculator
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Test</td><td>
+                                23.00
+                            </td><td>30.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">23.00</td><td class="sg-view-quick">30.00</td><td class="sg-view-quick">76.667%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/19/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Chp 1 Test No Calculator
+Category: Test
+Due Date: 09/19/2022
+Max Points: 70.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '3'); return false;">
+                                    Chp 1 Test No Calculator
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Test</td><td>
+                                61.00
+                            </td><td>70.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">61.00</td><td class="sg-view-quick">70.00</td><td class="sg-view-quick">87.143%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/19/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Optional Chp 1 HW
+Category: Homework
+Due Date: 09/19/2022
+Max Points: 45.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '2'); return false;">
+                                    Optional Chp 1 HW
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Homework</td><td>
+                                
+                            </td><td>45.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">&nbsp;</td><td class="sg-view-quick">45.00</td><td class="sg-view-quick">&nbsp;</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>09/12/2022</td><td>&nbsp;</td><td>
+                                <a title="Title: Assignment Course
+Classwork: Optional HW Chapter 1. 2 to 4
+Category: Homework
+Due Date: 09/12/2022
+Max Points: 15.00
+Can Be Dropped: Y
+Extra Credit: N
+Has Attachments: N" 
+                                    href="#" onclick="OpenAssignmentPopUp('433244', '1', '1'); return false;">
+                                    Optional HW Chapter 1. 2 to 4
+                                </a>
+                                <label style="display:none">*</label>
+                            </td><td>Homework</td><td>
+                                
+                            </td><td>15.00</td><td class="sg-view-quick">1.00</td><td class="sg-view-quick">&nbsp;</td><td class="sg-view-quick">15.00</td><td class="sg-view-quick">&nbsp;</td>
+		</tr>
+	</table>
+                <div class="sg-asp-table-group">
+                    <span id="plnMain_rptAssigmnetsByCourse_lblCategories_3" class="LabelCatogery">
+                        <div class="sg-view-quick sg-clearfix" >
+                            <div class="sg-header-group">
+                                <label id="plnMain_rptAssigmnetsByCourse_hdrCategories_3" CssClass="sg-header-heading">Categories</label>
+                            </div>
+                            <table class="sg-asp-table" cellspacing="0" rules="all" border="1" id="plnMain_rptAssigmnetsByCourse_dgCourseCategories_3">
+		<tr class="sg-asp-table-header-row">
+			<td align="center" valign="middle">Category</td><td align="center" valign="middle">Student's<br>Points</td><td align="center" valign="middle"> / Maximum<br>Points</td><td align="center" valign="middle"> = Percent</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>Class Work</td><td>20.0000</td><td>20.00</td><td>100.000%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>Homework</td><td>55.0000</td><td>65.00</td><td>84.615%</td>
+		</tr><tr class="sg-asp-table-data-row">
+			<td>Test</td><td>147.0000</td><td>200.00</td><td>73.500%</td>
+		</tr><tr bgcolor="#CCCCCC">
+			<td><font color="White"><b>Total Points:</b></font></td><td><font color="White"><b>222.00</b></font></td><td><font color="White"><b>285.00</b></font></td><td><font color="White"><b>77.8947%</b></font></td>
+		</tr>
+	</table>
+                            <br />
+                            
+                                <div style="display:inline-block;">
+                                <table id="plnMain_rptAssigmnetsByCourse_tblAverage_3">
+		<tr>
+			<td><b><span id="plnMain_rptAssigmnetsByCourse_lblStudentOvAverage_3">Course overall average is:</span></b></td><td><b><span id="plnMain_rptAssigmnetsByCourse_lblStuPoints_3">222.00</span></b></td><td><b>/</b></td><td><b><span id="plnMain_rptAssigmnetsByCourse_lblMaxPoints_3">285.00</span></b></td><td><b>=</b></td><td style="text-align: right"><b><span id="plnMain_rptAssigmnetsByCourse_lblOverallAverage_3">77.89</span></b></td><td><b>%</b></td>
+		</tr>
+	</table>
+                            </div>
+                            <span id="plnMain_rptAssigmnetsByCourse_lblShowAverages_3" class="sg-right">
+                                <button class="LabelCatogery sg-button"  id="btnShowAverages" onclick="btnShowAverages_onclick('433244', '1'); return false;" title="Show all student's averages"  >Show All Averages</button>	
+                            </span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+            
+    
+
+    
+    
+    
+  
+</div>
+  
+
+            </form>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            // Build the jQuery UI buttons
+            $('.sg-buttonset').buttonset();
+            $('.sg-button').button();
+            window.parent.$('.sg-legacy-iframe').height($('.sg-main-content').height()); // set the init size
+            // Increase length of smaller content windows to reduce cutoffs in dropdowns. 
+            var iframeHeight = window.parent.$('.sg-legacy-iframe').height(); 
+            if (iframeHeight < 450)
+            { window.parent.$('.sg-legacy-iframe').height($('.sg-main-content').height() + 200); }
+           
+        })
+    </script>
+</body>
+</html>

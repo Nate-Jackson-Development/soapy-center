@@ -4,7 +4,7 @@ import requests
 import json
 import re
 
-def main(username, password):
+def main(username, password, gradingPeriod):
     session = requests.Session()
     # Handles Cookies for logging in and persistance 
 
@@ -27,48 +27,52 @@ def main(username, password):
         "Database" : 10,
         "LogOnDetails.UserName" : username,
         "LogOnDetails.Password" : password,
-            }
+    }
     # Payload Information to send for login
 
-    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn/index.html?ReturnUrl=%2fhomeaccess", data = payload)
+    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn/index.html", data = payload)
     # Sending to Payload to the website for login
+
+    # print(GradeLogin.text)
 
     soup = BeautifulSoup(GradeLogin.text, features="html.parser")
     # Parsing the response from the payload
 
     assignments = soup.find("iframe")
     # Finding the Location of the Grades
+    
+    print("assig", assignments)
 
     link_get_source = "https://homeaccess.beth.k12.pa.us" + assignments.get("src")
     # Generates Link for the Extraction
 
+    print("period", gradingPeriod)    
+
     GradesLocation = session.post(url = link_get_source, data = payload)
     # grabs grades location
-
+    
     soup = BeautifulSoup(GradesLocation.text, features="html.parser")
     # Applies grades code to the variable 'soup' 
 
-    # print(GradesLocation.text)
+    hiddenInputs = soup.select("form#fmMain > input")
+    # print(hiddenInputs)
+    payload.update({x["id"]:x["value"] for x in hiddenInputs})
 
-    # # __EVENTTARGET = soup.select_one("#__EVENTTARGET")["value"]
-    # # __EVENTARGUMENT = soup.select_one("#__EVENTARGUMENT")["value"]
-    # __VIEWSTATE = soup.select_one("#__VIEWSTATE")["value"]
-    # __VIEWSTATEGENERATOR = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
-    # __EVENTVALIDATION = soup.select_one("#__EVENTVALIDATION")["value"]
-    # __SELECTION = "(All Runs)"
+    hiddenInputs = soup.select("form#fmMain > div > input")
 
-    # payload = {
-    #     # "__EVENTTARGET": __EVENTTARGET,
-    #     # "__EVENTARGUMENT": __EVENTARGUMENT,
-    #     "__VIEWSTATE": __VIEWSTATE,
-    #     "__VIEWSTATEGENERATOR": __VIEWSTATEGENERATOR,
-    #     "__EVENTVALIDATION": __EVENTVALIDATION,
-    #     "__SELECTION": __SELECTION
-    # }
+    payload.update({x["id"]:x["value"] for x in hiddenInputs})
 
-    # GradesLocation = session.post(url = link_get_source, data = payload)
+    payload["__EVENTTARGET"] = "ctl00$plnMain$btnRefreshView"
+    
+    # print(gradingPeriod)
 
-    # soup = BeautifulSoup(GradesLocation.text, features="html.parser")
+    payload["ctl00$plnMain$ddlReportCardRuns"] = gradingPeriod
+    
+    print(payload)
+
+    res = session.post(url = link_get_source, data = payload)
+
+    soup = BeautifulSoup(res.text, features="html.parser")
 
     # Start extraction --
 
@@ -189,12 +193,7 @@ def main(username, password):
         it += 1
         temp = list()
 
-
-        
-
     temp = None
-
-
 
     return mainList, assigGradeCombine, amountOfAssignments, assignmentDesc, assignmentGradesPoints
 
@@ -225,7 +224,7 @@ def attendanceFunc(username: str, password: str):
     VerificationToken = soup.find("input", {"name":"__RequestVerificationToken"}).get("value")
     # Retarted Verification Token added for no good reason
 
-    payload = {
+    _payload = {
         "__RequestVerificationToken" : VerificationToken,
         "SCKTY00328510CustomEnabled" : False,
         "Database" : 10,
@@ -234,7 +233,7 @@ def attendanceFunc(username: str, password: str):
             }
     # Payload Information to send for login
 
-    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = payload)
+    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = _payload)
 
     soup = BeautifulSoup(GradeLogin.text, features="html.parser")
     # Parsing the response from the payload
@@ -265,7 +264,7 @@ def getSchedule(username, password):
     VerificationToken = soup.find("input", {"name":"__RequestVerificationToken"}).get("value")
     # Retarted Verification Token added for no good reason
 
-    payload = {
+    _payload_ = {
         "__RequestVerificationToken" : VerificationToken,
         "SCKTY00328510CustomEnabled" : False,
         "Database" : 10,
@@ -274,7 +273,7 @@ def getSchedule(username, password):
             }
     # Payload Information to send for login
 
-    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = payload)
+    GradeLogin = session.post(url = "https://homeaccess.beth.k12.pa.us/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%2fAttendance%2fMonthView", data = _payload_)
 
     iframeLink = "https://homeaccess.beth.k12.pa.us/HomeAccess/Content/Student/Classes.aspx"
     iframeSRC = session.post(iframeLink)
