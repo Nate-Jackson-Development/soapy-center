@@ -1,51 +1,53 @@
-<!-- Authentication for a user;
-redirect here from index if not logged in-->
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeAccess Center &bull; Authentication</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BetterAccessCenter - Login</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}" type="text/css">
+    </head>
+
     <body>
-        <!-- Auth Box -->
-        <center>
-            <!-- If an error in auth has occured -->
-            {% if err != '0' %}
+        {% if err != '0' %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <h6><i class="fas fa-exclamation-circle"></i> Uh-oh!</h6> <br>
                 <p>Your credentials are most likely incorrect. If you're sure they're right, Home Access may be down.</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endif %}
-
-            <div class="auth-box">
-                <form action="" method="post">
-                    <h2 style="padding-top: 1em;"><i class="fas fa-sign-in-alt"></i> Authentication</h2>
-                    <h4>Proceed using your Home Access credentials.</h4>
-
-                    <div class="form-floating mb-1 auth" style="color:black;">
-                        <input type="text" name="username" class="form-control" id="username" placeholder="Username" style="margin-top: 5em;">
-                        <label for="username">Username</label>
-                    </div>
-                    <div class="form-floating mb-1 auth" style="color:black;">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" style="margin-top: 2em;">
-                        <label for="password">Password</label>
-                    </div>
-                    <button type="submit" class="btn btn-outline-light" style="width: 10em; height: 3em; margin-top: 2em;"><i class="fas fa-sign-in-alt"></i> Proceed</button>
-                </form>
             </div>
-        </center>
+        {% endif %}
 
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/de5215728b.js" crossorigin="anonymous"></script>
-        <script>
-
-        </script>
+        <section class="container-fluid">
+            <div class="row vh-100">
+                <div class="d-flex col-6 bg-nord1">
+                    <div class="row mx-auto justify-content-center">
+                        <div class="col-8 align-self-center">
+                            <h1>Better Access Center</h1>
+                            <p>Better Access Center is a tool that makes it easier for you to see your school information like your grades, attendance, and schedule.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 d-flex">
+                    <div class="row mx-auto col-5 align-items-center">
+                        <div class="col-12">
+                            <form action="https://homeaccess.naed3r.xyz/auth/v1/" method="post">
+                                <div class="mb-2">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="col-12 btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

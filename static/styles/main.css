@@ -1,0 +1,146 @@
+/* Make a set of variables for the nord color scheme */
+
+:root {
+    --nord0: #2e3440;
+    --nord1: #3b4252;
+    --nord2: #434c5e;
+    --nord3: #4c566a;
+    --nord4: #d8dee9;
+    --nord5: #e5e9f0;
+    --nord6: #eceff4;
+    --nord7: #8fbcbb;
+    --nord8: #88c0d0;
+    --nord9: #81a1c1;
+    --nord10: #5e81ac;
+    --nord11: #bf616a;
+    --nord12: #d08770;
+    --nord13: #ebcb8b;
+    --nord14: #a3be8c;
+    --nord15: #b48ead;
+}
+
+body {
+    background-color: var(--nord0) !important;
+    color: var(--nord4) !important;
+}
+
+.bg-nord1 {
+    background-color: var(--nord1) !important;
+}
+
+.bg-nord0 {
+    background-color: var(--nord0) !important;
+}
+
+.bg-nord2 {
+    background-color: var(--nord2) !important;
+}
+
+.bg-nord3 {
+    background-color: var(--nord3) !important;
+}
+
+.bg-nord4 {
+    background-color: var(--nord4) !important;
+}
+
+.bg-nord5 {
+    background-color: var(--nord5) !important;
+}
+
+.bg-nord6 {
+    background-color: var(--nord6) !important;
+}
+
+.bg-nord7 {
+    background-color: var(--nord7) !important;
+}
+
+.bg-nord8 {
+    background-color: var(--nord8) !important;
+}
+
+.bg-nord9 {
+    background-color: var(--nord9) !important;
+}
+
+.bg-nord10 {
+    background-color: var(--nord10) !important;
+}
+
+.bg-nord11 {
+    background-color: var(--nord11) !important;
+}
+
+.bg-nord12 {
+    background-color: var(--nord12) !important;
+}
+
+.bg-nord13 {
+    background-color: var(--nord13) !important;
+}
+
+.bg-nord14 {
+    background-color: var(--nord14) !important;
+}
+
+.bg-nord15 {
+    background-color: var(--nord15) !important;
+}
+
+.text-nord1 {
+    color: var(--nord1) !important;
+}
+
+.text-nord0 {
+    color: var(--nord0) !important;
+}
+
+.text-nord2 {
+    color: var(--nord2) !important;
+}
+
+.text-nord3 {
+    color: var(--nord3) !important;
+}
+
+.text-nord4 {
+    color: var(--nord4) !important;
+}
+
+.text-nord5 {
+    color: var(--nord5) !important;
+}
+
+.text-nord6 {
+    color: var(--nord6) !important;
+}
+
+.text-nord7 {
+    color: var(--nord7) !important;
+}
+
+.text-nord8 {
+    color: var(--nord8) !important;
+}
+
+.text-nord9 {
+    color: var(--nord9) !important;
+}
+
+.text-nord10 {
+    color: var(--nord10) !important;
+}
+
+.text-nord11 {
+    color: var(--nord11) !important;
+}
+
+.btn-primary {
+    background-color: var(--nord10) !important;
+}
+
+/* add hover effects to nav links */
+.navbar-nav .nav-link:hover {
+    color: var(--nord10) !important;
+}
